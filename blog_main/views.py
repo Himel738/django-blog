@@ -44,7 +44,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-            return redirect('home')  # Redirect to home after successful login
+            return redirect('dashboard')  # Redirect to dashboard after successful login
     form = AuthenticationForm()
     context = {
         "form": form,
