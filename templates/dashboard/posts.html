@@ -27,8 +27,8 @@
             <tbody>
             {% for post in posts %}
               <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ post.title }}</td>
+                <td> {{ forloop.counter }}</td>
+                <td><a href="{% url 'blogs' post.slug %}">{{ post.title }}</a></td>
                 <td>{{ post.category }}</td>
                 <td>{{ post.author }}</td>
                 <td>{{ post.status }}</td>

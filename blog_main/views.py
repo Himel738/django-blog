@@ -5,6 +5,8 @@ from blogs.models import Blog, Category
 from assignments.models import About
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth
+from django.contrib.auth.models import Group
+from django.contrib import messages
 def home(request):
     featured_posts = Blog.objects.filter(is_featured=True, status='Published').order_by('updated_at')
     posts = Blog.objects.filter(is_featured=False, status='Published').order_by('updated_at')
@@ -23,12 +25,18 @@ def register(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('register')  # Redirect to home after successful registration
+            user = form.save()
+
+            # Assign the user to the "User" group
+            group, created = Group.objects.get_or_create(name="User")
+            user.groups.add(group)
+
+            messages.success(request, "Registration successful. You can now log in.")
+            return redirect('login')
     else:
         form = RegistrationForm()
-    
-    context={
+
+    context = {
         "form": form,
     }
     return render(request, "register.html", context)

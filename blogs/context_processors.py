@@ -1,5 +1,6 @@
 from assignments.models import SocialLink
 from .models import Category
+from django.contrib.messages import constants as messages
 
 def get_categories(request):
     categories = Category.objects.all()
