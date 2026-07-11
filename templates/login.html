@@ -8,6 +8,9 @@
 <form action="{% url 'login' %}" method="POST" style="width:500px; margin:auto;">
     {% csrf_token %}
     {{ form | crispy }}
-    <button type="submit" class="btn btn-warning">Login</button>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="submit" class="btn btn-warning">Login</button>
+        <a href="{% url 'forgot_password' %}" class="btn btn-link">Forgot Password?</a>
+    </div>
 </form>
 {% endblock %}

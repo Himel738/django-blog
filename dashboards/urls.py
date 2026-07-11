@@ -9,6 +9,7 @@ urlpatterns = [
     path('categories/add/', views.add_category, name='add_category'),
     path('categories/edit/<int:pk>/', views.edit_category, name='edit_category'),
     path('categories/delete/<int:pk>/', views.delete_category, name='delete_category'),
+
     # blog URLs
     path('posts/', views.posts, name='posts'),
     path('posts/add/', views.add_post, name='add_post'),
@@ -19,5 +20,7 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('users/add/', views.add_user, name='add_user'),
     path('users/edit/<int:pk>/', views.edit_user, name='edit_user'),
-    path('users/delete/<int:pk>/', views.delete_user, name='delete_user')
+    path('users/delete/<int:pk>/', views.delete_user, name='delete_user'),
+
+   
 ]
